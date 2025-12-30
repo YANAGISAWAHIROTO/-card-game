@@ -1,46 +1,109 @@
 body {
-  font-family: sans-serif;
-  background: #1b1b1b;
+  background: #111;
   color: #fff;
+  font-family: "Segoe UI", sans-serif;
   text-align: center;
+  margin: 0;
+  padding: 10px;
 }
 
-#board {
-  margin: 20px auto;
-  width: 90%;
+.title {
+  margin-bottom: 10px;
 }
 
-.battle-area {
+.board {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
 }
 
-.slot {
-  width: 100px;
-  height: 140px;
-  border: 2px dashed #aaa;
+/* カード全体 */
+.card {
+  width: 260px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 12px #000;
+}
+
+/* 画像エリア */
+.card-image {
+  height: 160px;
+  background: linear-gradient(135deg, #3a145e, #120018);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
 }
 
-.card {
-  width: 120px;
-  height: 180px;
-  background: #2e2e2e;
-  border: 2px solid #888;
-  border-radius: 8px;
-  padding: 5px;
-  margin: 5px;
+/* ステータス */
+.card-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #1a1a1a;
+  font-size: 13px;
+  border-bottom: 2px solid #444;
+}
+
+/* 技UI */
+.skills {
+  background: #222;
+  padding: 6px;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 2px 6px;
+  padding: 6px;
+  margin-bottom: 5px;
+  background: #333;
+  border-radius: 6px;
+  font-size: 12px;
   cursor: pointer;
 }
 
-.card-name {
+.skill-name {
   font-weight: bold;
 }
 
-.card-stats {
-  font-size: 12px;
+.skill-damage {
+  grid-row: 1 / 3;
+  font-size: 14px;
+  font-weight: bold;
 }
+
+.skill-dice {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* 属性 */
+.skill.fire { border-left: 4px solid #ff5a3c; }
+.skill.dark { border-left: 4px solid #8a2be2; }
+.skill.water { border-left: 4px solid #3ca9ff; }
+.skill.light { border-left: 4px solid #ffd700; }
+
+/* 特殊技 */
+.skill.special {
+  background: linear-gradient(90deg, #3a1c5a, #222);
+}
+
+/* 発動可能（次フェーズ用） */
+.skill.active {
+  box-shadow: 0 0 8px #ffd700;
+  background: #444;
+}
+
+/* サイコロボタン */
+.dice-btn {
+  margin-top: 12px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  }
