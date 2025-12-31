@@ -2,55 +2,63 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>カードゲーム試作</title>
+  <title>カードゲーム｜カードデザイン確認</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 class="title">カードゲーム試作</h1>
+<h1 class="title">カードデザイン（ゲーム内表示）</h1>
 
 <div class="board">
 
-  <div class="card">
+  <!-- カード1枚 -->
+  <div class="card dark">
+
+    <div class="card-header">
+      <span class="card-name">死者サリク</span>
+      <span class="card-type">モンスター</span>
+    </div>
+
     <div class="card-image">
-      <span>死者サリク</span>
+      <span class="card-image-text">Undead</span>
     </div>
 
     <div class="card-status">
-      <span>HP 8</span>
+      <span>❤️ HP 8</span>
       <span>🛡️ 2（🎲3・4）</span>
     </div>
 
-    <!-- 技UI -->
     <div class="skills">
 
       <div class="skill dark">
-        <div class="skill-name">断罪</div>
-        <div class="skill-damage">-4</div>
+        <div class="skill-top">
+          <span class="skill-name">断罪</span>
+          <span class="skill-damage">-4</span>
+        </div>
         <div class="skill-dice">🎲 1 / 3</div>
       </div>
 
       <div class="skill dark special">
-        <div class="skill-name">復活の呪文</div>
-        <div class="skill-damage">-8</div>
+        <div class="skill-top">
+          <span class="skill-name">復活の呪文</span>
+          <span class="skill-damage">-8</span>
+        </div>
         <div class="skill-dice">🎲 4 / 1</div>
       </div>
 
       <div class="skill fire">
-        <div class="skill-name">破炎</div>
-        <div class="skill-damage">-3</div>
+        <div class="skill-top">
+          <span class="skill-name">破炎</span>
+          <span class="skill-damage">-3</span>
+        </div>
         <div class="skill-dice">🎲 2 / 1</div>
       </div>
 
     </div>
+
   </div>
 
 </div>
 
-<button class="dice-btn">🎲 サイコロ</button>
-
-<!-- ★ これが超重要（JS読込） -->
-<script src="game.js"></script>
-
 </body>
-    </html>
+  </html>
