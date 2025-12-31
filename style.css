@@ -1,123 +1,120 @@
-/* 全体 */
+/* ===== 全体 ===== */
 body {
-  background: radial-gradient(circle at top, #140018, #050008);
-  color: #fff;
-  font-family: "Segoe UI", sans-serif;
   margin: 0;
-  padding: 12px;
+  padding: 16px;
+  background: radial-gradient(circle at top, #0b0f0b, #000);
+  color: #f0f0e8;
+  font-family: "Cinzel", "Yu Mincho", serif;
   text-align: center;
 }
 
 .title {
-  margin-bottom: 12px;
   font-size: 18px;
-  opacity: 0.9;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
 }
 
-.board {
-  display: flex;
-  justify-content: center;
-}
-
-/* カード全体 */
+/* ===== カード ===== */
 .card {
-  width: 260px;
-  background: #1a1022;
-  border-radius: 16px;
-  box-shadow: 0 0 22px #000;
+  width: 280px;
+  border-radius: 18px;
+  background: linear-gradient(#2b3326, #11160f);
+  box-shadow:
+    0 0 0 3px #5c5a3a,
+    0 0 0 6px #1b1a12,
+    0 12px 30px rgba(0,0,0,0.8);
   overflow: hidden;
-  border: 2px solid #444;
 }
 
-/* 属性別カード枠 */
-.card.dark {
-  border-color: #8a2be2;
-}
-
-/* ヘッダー */
+/* ===== ヘッダー ===== */
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 10px;
-  background: linear-gradient(90deg, #120016, #1a1022);
-  font-size: 13px;
+  background: linear-gradient(#3e4b32, #1e2418);
+  border-bottom: 2px solid #6a6a3a;
+  padding: 8px;
   font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 15px;
 }
 
-/* 画像エリア */
+/* ===== 画像エリア ===== */
 .card-image {
-  height: 165px;
-  background: radial-gradient(circle, #4b1368, #140018);
+  height: 190px;
+  background:
+    radial-gradient(circle at center, rgba(0,255,100,0.15), transparent 60%),
+    linear-gradient(#1d2a1a, #0c120c);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  border-bottom: 2px solid #6a6a3a;
 }
 
 .card-image-text {
-  font-size: 22px;
-  opacity: 0.4;
-  letter-spacing: 2px;
+  opacity: 0.25;
+  font-size: 26px;
+  letter-spacing: 3px;
 }
 
-/* ステータス */
+/* ===== ステータス ===== */
 .card-status {
   display: flex;
   justify-content: space-between;
   padding: 6px 10px;
-  background: #120016;
-  font-size: 12px;
-  border-bottom: 1px solid #3a145e;
+  background: linear-gradient(#1c2218, #10140e);
+  border-bottom: 2px solid #3f432a;
+  font-size: 13px;
 }
 
-/* 技エリア */
+/* ===== 技 ===== */
 .skills {
   padding: 8px;
-  background: #1a1022;
+  background: #0f140e;
 }
 
-/* 技1つ */
 .skill {
-  background: #2a1a35;
-  border-radius: 8px;
-  padding: 6px;
-  margin-bottom: 7px;
-  border-left: 4px solid #555;
+  background: linear-gradient(#2a3124, #151a12);
+  border: 1px solid #5a5a3a;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
 }
 
-/* 技上段 */
 .skill-top {
   display: flex;
   justify-content: space-between;
   font-size: 13px;
+  font-weight: bold;
 }
 
-.skill-name {
-  font-weight: bold;
+.skill-name::before {
+  content: "◆ ";
+  color: #9fcf7a;
 }
 
 .skill-damage {
-  font-weight: bold;
+  color: #ffd27d;
 }
 
-/* 技下段 */
 .skill-dice {
+  margin-top: 4px;
   font-size: 11px;
-  opacity: 0.8;
-  margin-top: 2px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  background: #0b0f0b;
+  border: 1px solid #4a4a2a;
 }
 
-/* 属性 */
+/* ===== 属性 ===== */
 .skill.fire {
-  border-left-color: #ff5a3c;
+  border-left: 4px solid #c95a2a;
 }
 
 .skill.dark {
-  border-left-color: #8a2be2;
+  border-left: 4px solid #7a5ac9;
 }
 
-/* 特殊技 */
 .skill.special {
-  background: linear-gradient(90deg, #3a145e, #1a1022);
-  box-shadow: inset 0 0 6px #000;
+  background: linear-gradient(#384a3a, #141c14);
+  box-shadow: inset 0 0 10px rgba(0,255,100,0.2);
   }
