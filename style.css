@@ -1,14 +1,17 @@
+/* 全体 */
 body {
-  background: #111;
+  background: radial-gradient(circle at top, #140018, #050008);
   color: #fff;
   font-family: "Segoe UI", sans-serif;
-  text-align: center;
   margin: 0;
-  padding: 10px;
+  padding: 12px;
+  text-align: center;
 }
 
 .title {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  opacity: 0.9;
 }
 
 .board {
@@ -19,21 +22,42 @@ body {
 /* カード全体 */
 .card {
   width: 260px;
-  background: #222;
-  border-radius: 10px;
+  background: #1a1022;
+  border-radius: 16px;
+  box-shadow: 0 0 22px #000;
   overflow: hidden;
-  box-shadow: 0 0 12px #000;
+  border: 2px solid #444;
+}
+
+/* 属性別カード枠 */
+.card.dark {
+  border-color: #8a2be2;
+}
+
+/* ヘッダー */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: linear-gradient(90deg, #120016, #1a1022);
+  font-size: 13px;
+  font-weight: bold;
 }
 
 /* 画像エリア */
 .card-image {
-  height: 160px;
-  background: linear-gradient(135deg, #3a145e, #120018);
+  height: 165px;
+  background: radial-gradient(circle, #4b1368, #140018);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-size: 18px;
+  position: relative;
+}
+
+.card-image-text {
+  font-size: 22px;
+  opacity: 0.4;
+  letter-spacing: 2px;
 }
 
 /* ステータス */
@@ -41,28 +65,31 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 6px 10px;
-  background: #1a1a1a;
-  font-size: 13px;
-  border-bottom: 2px solid #444;
-}
-
-/* 技UI */
-.skills {
-  background: #222;
-  padding: 6px;
-}
-
-.skill {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
-  gap: 2px 6px;
-  padding: 6px;
-  margin-bottom: 5px;
-  background: #333;
-  border-radius: 6px;
+  background: #120016;
   font-size: 12px;
-  cursor: pointer;
+  border-bottom: 1px solid #3a145e;
+}
+
+/* 技エリア */
+.skills {
+  padding: 8px;
+  background: #1a1022;
+}
+
+/* 技1つ */
+.skill {
+  background: #2a1a35;
+  border-radius: 8px;
+  padding: 6px;
+  margin-bottom: 7px;
+  border-left: 4px solid #555;
+}
+
+/* 技上段 */
+.skill-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
 }
 
 .skill-name {
@@ -70,40 +97,27 @@ body {
 }
 
 .skill-damage {
-  grid-row: 1 / 3;
-  font-size: 14px;
   font-weight: bold;
 }
 
+/* 技下段 */
 .skill-dice {
   font-size: 11px;
   opacity: 0.8;
+  margin-top: 2px;
 }
 
 /* 属性 */
-.skill.fire { border-left: 4px solid #ff5a3c; }
-.skill.dark { border-left: 4px solid #8a2be2; }
-.skill.water { border-left: 4px solid #3ca9ff; }
-.skill.light { border-left: 4px solid #ffd700; }
+.skill.fire {
+  border-left-color: #ff5a3c;
+}
+
+.skill.dark {
+  border-left-color: #8a2be2;
+}
 
 /* 特殊技 */
 .skill.special {
-  background: linear-gradient(90deg, #3a1c5a, #222);
-}
-
-/* 発動可能（次フェーズ用） */
-.skill.active {
-  box-shadow: 0 0 8px #ffd700;
-  background: #444;
-}
-
-/* サイコロボタン */
-.dice-btn {
-  margin-top: 12px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background: #444;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
+  background: linear-gradient(90deg, #3a145e, #1a1022);
+  box-shadow: inset 0 0 6px #000;
   }
