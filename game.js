@@ -1,19 +1,40 @@
+const card = cards[0];
+const cardDiv = document.getElementById("card");
+const log = document.getElementById("log");
 const diceBtn = document.querySelector(".dice-btn");
-const skills = document.querySelectorAll(".skill");
+
+function renderCard() {
+  cardDiv.innerHTML = `
+    <h2>${card.name}</h2>
+    <p>HP: ${card.hp}</p>
+    <p>シールド: ${card.shield.value} (🎲 ${card.shield.dice.join(",")})</p>
+
+    ${card.skills.map((s, i) => `
+      <div class="skill" data-index="${i}">
+        ${s.name} / DMG ${s.dmg} (🎲 ${s.dice.join(",")})
+      </div>
+    `).join("")}
+  `;
+}
 
 diceBtn.addEventListener("click", () => {
-  // 1〜6のサイコロ
-  const dice = Math.floor(Math.random() * 6) + 1;
-  alert("出目：" + dice);
+  rollDice();
 
-  // 全技を一旦オフ
-  skills.forEach(skill => skill.classList.remove("active"));
-
-  // 技の🎲条件をチェック
-  skills.forEach(skill => {
-    const diceText = skill.querySelector(".skill-dice").textContent;
-    if (diceText.includes(dice)) {
+  document.querySelectorAll(".skill").forEach(skill => {
+    skill.classList.remove("active");
+    const i = skill.dataset.index;
+    if (card.skills[i].dice.includes(currentDice)) {
       skill.classList.add("active");
     }
   });
 });
+
+cardDiv.addEventListener("click", e => {
+  if (!e.target.classList.contains("skill")) return;
+  if (!e.target.classList.contains("active")) return;
+
+  const skill = card.skills[e.target.dataset.index];
+  log.textContent = `${skill.name} 発動！ DMG ${skill.dmg}`;
+});
+
+renderCard();
