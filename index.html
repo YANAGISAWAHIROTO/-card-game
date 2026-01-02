@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>カードゲーム</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <h1>カードゲーム（構造版）</h1>
 
-<div id="card"></div>
+<div class="game">
+  <div id="card-area"></div>
 
-<button class="dice-btn">🎲 サイコロを振る</button>
-<p id="dice-result">出目：-</p>
+  <button class="dice-btn">🎲 サイコロを振る</button>
+  <p id="dice-result">出目：-</p>
 
-<div id="log"></div>
+  <div id="log"></div>
+</div>
 
 <script src="cards.js"></script>
 <script src="dice.js"></script>
