@@ -5,27 +5,50 @@ body {
   text-align: center;
 }
 
-#card {
-  width: 300px;
-  margin: 20px auto;
+.game {
+  max-width: 420px;
+  margin: auto;
+}
+
+.card {
+  background: #1b1b1b;
+  border: 2px solid #444;
+  border-radius: 12px;
   padding: 10px;
-  background: #222;
-  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  margin: 4px 0;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .skill {
-  margin: 6px 0;
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 6px;
   padding: 6px;
-  background: #333;
+  margin: 6px 0;
   cursor: pointer;
 }
 
 .skill.active {
-  background: #4caf50;
+  background: #1f5f3a;
+  border-color: #3cff9e;
 }
 
-.dice-btn {
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 16px;
+.skill.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+#log {
+  margin-top: 16px;
+  font-size: 14px;
+  min-height: 40px;
 }
