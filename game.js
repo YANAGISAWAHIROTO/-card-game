@@ -1,40 +1,48 @@
-const card = cards[0];
-const cardDiv = document.getElementById("card");
+const cardArea = document.getElementById("card-area");
 const log = document.getElementById("log");
 const diceBtn = document.querySelector(".dice-btn");
 
-function renderCard() {
-  cardDiv.innerHTML = `
-    <h2>${card.name}</h2>
-    <p>HP: ${card.hp}</p>
-    <p>シールド: ${card.shield.value} (🎲 ${card.shield.dice.join(",")})</p>
+let activeCard = cards[0]; // 仮でサリク固定
 
-    ${card.skills.map((s, i) => `
-      <div class="skill" data-index="${i}">
-        ${s.name} / DMG ${s.dmg} (🎲 ${s.dice.join(",")})
-      </div>
-    `).join("")}
+function renderCard() {
+  cardArea.innerHTML = "";
+
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <h2>${activeCard.name}</h2>
+    <div class="status">
+      <span>❤️ HP ${activeCard.hp}</span>
+      <span>🛡 ${activeCard.shield.value}</span>
+    </div>
   `;
+
+  activeCard.skills.forEach(skill => {
+    const div = document.createElement("div");
+    div.className = "skill disabled";
+    div.dataset.dice = skill.dice.join(",");
+
+    div.textContent =
+      `${skill.name} / DMG ${skill.dmg} 🎲(${skill.dice.join(" ")})`;
+
+    div.onclick = () => {
+      log.textContent = `${skill.name} 発動！`;
+    };
+
+    card.appendChild(div);
+  });
+
+  cardArea.appendChild(card);
 }
 
-diceBtn.addEventListener("click", () => {
-  rollDice();
-
+diceBtn.onclick = () => {
+  const dice = rollDice();
   document.querySelectorAll(".skill").forEach(skill => {
-    skill.classList.remove("active");
-    const i = skill.dataset.index;
-    if (card.skills[i].dice.includes(currentDice)) {
-      skill.classList.add("active");
-    }
+    const need = skill.dataset.dice.split(",").map(Number);
+    skill.classList.toggle("active", need.includes(dice));
+    skill.classList.toggle("disabled", !need.includes(dice));
   });
-});
-
-cardDiv.addEventListener("click", e => {
-  if (!e.target.classList.contains("skill")) return;
-  if (!e.target.classList.contains("active")) return;
-
-  const skill = card.skills[e.target.dataset.index];
-  log.textContent = `${skill.name} 発動！ DMG ${skill.dmg}`;
-});
+};
 
 renderCard();
