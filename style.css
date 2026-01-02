@@ -1,95 +1,31 @@
 body {
-  margin: 0;
-  background: radial-gradient(circle at top, #0b120f, #000);
-  color: #e0e0e0;
-  font-family: "Segoe UI", sans-serif;
-}
-
-.title {
+  background: #111;
+  color: #eee;
+  font-family: sans-serif;
   text-align: center;
-  margin: 30px 0;
-  color: #cfcfcf;
-  letter-spacing: 2px;
 }
 
-.card {
-  width: 280px;
-  margin: 0 auto;
-  background: linear-gradient(180deg, #1b2a22, #0c0f0d);
-  border-radius: 14px;
-  box-shadow:
-    0 0 25px rgba(0,255,150,0.15),
-    inset 0 0 12px rgba(0,0,0,0.8);
-  border: 2px solid rgba(120,180,140,0.4);
-  overflow: hidden;
-}
-
-/* ===== カード上部 ===== */
-.card-header {
-  text-align: center;
+#card {
+  width: 300px;
+  margin: 20px auto;
   padding: 10px;
-  font-weight: bold;
-  background: linear-gradient(180deg, #2e4638, #1a2b22);
-  border-bottom: 2px solid rgba(0,255,150,0.3);
-}
-
-/* ===== ステップ3の本体（画像） ===== */
-.card-image {
-  width: 100%;
-  height: 260px;
-  overflow: hidden;
-  position: relative;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: contrast(1.1) saturate(1.25);
-}
-
-/* 暗黒オーラ */
-.card-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(0,255,150,0.15), transparent 70%);
-  pointer-events: none;
-}
-
-/* ===== ステータス ===== */
-.card-status {
-  display: flex;
-  justify-content: space-around;
-  padding: 8px;
-  font-size: 14px;
-  background: rgba(0,0,0,0.4);
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-/* ===== 技 ===== */
-.skills {
-  padding: 8px;
+  background: #222;
+  border-radius: 8px;
 }
 
 .skill {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-  margin-bottom: 6px;
-  border-radius: 6px;
-  font-size: 14px;
-  background: rgba(255,255,255,0.05);
+  margin: 6px 0;
+  padding: 6px;
+  background: #333;
+  cursor: pointer;
 }
 
-.skill.purple {
-  border-left: 4px solid #8a4bff;
+.skill.active {
+  background: #4caf50;
 }
 
-.skill.green {
-  border-left: 4px solid #3aff7a;
-}
-
-.skill.red {
-  border-left: 4px solid #ff5a3a;
+.dice-btn {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
 }
