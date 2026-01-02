@@ -7,16 +7,24 @@
 </head>
 <body>
 
-<h1>カードゲーム（構造版）</h1>
+<h2 id="turn-indicator">自分のターン</h2>
 
-<div class="game">
-  <div id="card-area"></div>
+<div id="board"></div>
 
-  <button class="dice-btn">🎲 サイコロを振る</button>
-  <p id="dice-result">出目：-</p>
-
-  <div id="log"></div>
+<div class="controls">
+  <button id="dice-btn">🎲 サイコロ</button>
+  <span id="dice-result">-</span>
 </div>
+
+<div id="skills"></div>
+
+<div class="bases">
+  <div id="enemy-base">敵本体 ❤️6</div>
+  <div id="player-base">自分本体 ❤️6</div>
+</div>
+
+<div id="log"></div>
+<button id="end-turn-btn">ターン終了</button>
 
 <script src="cards.js"></script>
 <script src="dice.js"></script>
