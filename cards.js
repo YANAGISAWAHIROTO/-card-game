@@ -1,39 +1,36 @@
-const cards = [
+const STATUS_RULES = {
+  fire:   { name: "🔥炎上", damage: 1 },
+  poison: { name: "💀毒", damage: 1 },
+  thunder:{ name: "⚡麻痺", skip: true },
+  confuse:{ name: "🌀混乱", skip: true }
+};
+
+const allCards = [
   {
-    id: "sarik",
+    name: "剣士",
+    hp: 8,
+    shield: { value: 2, dice: [6,2,1] },
+    skills: [
+      { name: "切断", damage: 2, dice: [1,2,3] },
+      { name: "乱舞", damage: 3, dice: [4,5] },
+      { name: "雷剣", damage: 5, dice: [6], status:{type:"thunder",turns:3} }
+    ]
+  },
+  {
     name: "死者サリク",
-    type: "monster",
     hp: 8,
     shield: { value: 2, dice: [3,4] },
     skills: [
-      { name: "断罪", dmg: 4, dice: [1,3] },
-      { name: "復活の呪文", dmg: 8, dice: [4,1], special: "revive" },
-      { name: "破炎", dmg: 3, dice: [2,1], attr: "fire" }
-    ]
-  },
-
-  {
-    id: "annie",
-    name: "森の精アニー",
-    type: "monster",
-    hp: 5,
-    shield: { value: 4, dice: [2,4] },
-    skills: [
-      { name: "花道", dmg: 1, dice: [1,2,3], attr: "confuse" },
-      { name: "巨木", dmg: 3, dice: [3,2], pierce: true },
-      { name: "毒花", dmg: 2, dice: [2,4], attr: "poison" }
-    ]
-  },
-
-  {
-    id: "balan",
-    name: "光者バラン",
-    type: "monster",
-    hp: 5,
-    shield: { value: 3, dice: [2,3] },
-    skills: [
-      { name: "光魔剣", dmg: 3, dice: [1,6], attr: "confuse" },
-      { name: "閃斬", dmg: 4, dice: [5,2] }
+      { name: "断罪", damage: 4, dice: [1,3] },
+      { name: "破炎", damage: 3, dice: [2,1], status:{type:"fire",turns:3} },
+      { name: "復活の呪文", damage: 0, dice: [4,1], revive:true }
     ]
   }
+];
+
+const trapCards = [
+  { name:"命の籠", damage:2 },
+  { name:"炎の弓", damage:1, status:{type:"fire",turns:3} },
+  { name:"洗脳魔法", skip:true },
+  { name:"黄泉の砦", damage:4 }
 ];
