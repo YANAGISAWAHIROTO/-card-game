@@ -1,110 +1,95 @@
 body {
   margin: 0;
-  padding: 16px;
-  background: radial-gradient(circle at top, #0b0f0b, #000);
-  color: #f0f0e8;
-  font-family: "Cinzel", "Yu Mincho", serif;
-  text-align: center;
+  background: radial-gradient(circle at top, #0b120f, #000);
+  color: #e0e0e0;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .title {
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-
-.board {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  margin: 30px 0;
+  color: #cfcfcf;
+  letter-spacing: 2px;
 }
 
 .card {
   width: 280px;
-  border-radius: 18px;
-  background: linear-gradient(#2b3326, #11160f);
+  margin: 0 auto;
+  background: linear-gradient(180deg, #1b2a22, #0c0f0d);
+  border-radius: 14px;
   box-shadow:
-    0 0 0 3px #5c5a3a,
-    0 0 0 6px #1b1a12,
-    0 12px 30px rgba(0,0,0,0.8);
+    0 0 25px rgba(0,255,150,0.15),
+    inset 0 0 12px rgba(0,0,0,0.8);
+  border: 2px solid rgba(120,180,140,0.4);
   overflow: hidden;
 }
 
+/* ===== カード上部 ===== */
 .card-header {
-  background: linear-gradient(#3e4b32, #1e2418);
-  border-bottom: 2px solid #6a6a3a;
-  padding: 8px;
+  text-align: center;
+  padding: 10px;
   font-weight: bold;
-  font-size: 15px;
+  background: linear-gradient(180deg, #2e4638, #1a2b22);
+  border-bottom: 2px solid rgba(0,255,150,0.3);
 }
 
-/* ===== 画像 ===== */
+/* ===== ステップ3の本体（画像） ===== */
 .card-image {
-  height: 200px;
-  background: #0b0f0b;
-  border-bottom: 2px solid #6a6a3a;
+  width: 100%;
+  height: 260px;
   overflow: hidden;
+  position: relative;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: contrast(1.1) saturate(1.25);
+}
+
+/* 暗黒オーラ */
+.card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,255,150,0.15), transparent 70%);
+  pointer-events: none;
 }
 
 /* ===== ステータス ===== */
 .card-status {
   display: flex;
-  justify-content: space-between;
-  padding: 6px 10px;
-  background: linear-gradient(#1c2218, #10140e);
-  border-bottom: 2px solid #3f432a;
-  font-size: 13px;
+  justify-content: space-around;
+  padding: 8px;
+  font-size: 14px;
+  background: rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 /* ===== 技 ===== */
 .skills {
   padding: 8px;
-  background: #0f140e;
 }
 
 .skill {
-  background: linear-gradient(#2a3124, #151a12);
-  border: 1px solid #5a5a3a;
-  border-radius: 6px;
-  margin-bottom: 8px;
-  padding: 6px 8px;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
-}
-
-.skill-top {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
-  font-weight: bold;
+  padding: 8px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.05);
 }
 
-.skill-name::before {
-  content: "◆ ";
-  color: #9fcf7a;
+.skill.purple {
+  border-left: 4px solid #8a4bff;
 }
 
-.skill-damage {
-  color: #ffd27d;
+.skill.green {
+  border-left: 4px solid #3aff7a;
 }
 
-.skill-dice {
-  margin-top: 4px;
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  display: inline-block;
-  background: #0b0f0b;
-  border: 1px solid #4a4a2a;
-}
-
-/* 属性 */
-.skill.fire { border-left: 4px solid #c95a2a; }
-.skill.dark { border-left: 4px solid #7a5ac9; }
-.skill.special {
-  background: linear-gradient(#384a3a, #141c14);
-  box-shadow: inset 0 0 10px rgba(0,255,100,0.2);
+.skill.red {
+  border-left: 4px solid #ff5a3a;
 }
