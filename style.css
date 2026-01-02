@@ -1,4 +1,3 @@
-/* ===== 全体 ===== */
 body {
   margin: 0;
   padding: 16px;
@@ -11,10 +10,13 @@ body {
 .title {
   font-size: 18px;
   margin-bottom: 12px;
-  letter-spacing: 1px;
 }
 
-/* ===== カード ===== */
+.board {
+  display: flex;
+  justify-content: center;
+}
+
 .card {
   width: 280px;
   border-radius: 18px;
@@ -26,32 +28,26 @@ body {
   overflow: hidden;
 }
 
-/* ===== ヘッダー ===== */
 .card-header {
   background: linear-gradient(#3e4b32, #1e2418);
   border-bottom: 2px solid #6a6a3a;
   padding: 8px;
   font-weight: bold;
-  letter-spacing: 1px;
   font-size: 15px;
 }
 
-/* ===== 画像エリア ===== */
+/* ===== 画像 ===== */
 .card-image {
-  height: 190px;
-  background:
-    radial-gradient(circle at center, rgba(0,255,100,0.15), transparent 60%),
-    linear-gradient(#1d2a1a, #0c120c);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 200px;
+  background: #0b0f0b;
   border-bottom: 2px solid #6a6a3a;
+  overflow: hidden;
 }
 
-.card-image-text {
-  opacity: 0.25;
-  font-size: 26px;
-  letter-spacing: 3px;
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ===== ステータス ===== */
@@ -105,15 +101,9 @@ body {
   border: 1px solid #4a4a2a;
 }
 
-/* ===== 属性 ===== */
-.skill.fire {
-  border-left: 4px solid #c95a2a;
-}
-
-.skill.dark {
-  border-left: 4px solid #7a5ac9;
-}
-
+/* 属性 */
+.skill.fire { border-left: 4px solid #c95a2a; }
+.skill.dark { border-left: 4px solid #7a5ac9; }
 .skill.special {
   background: linear-gradient(#384a3a, #141c14);
   box-shadow: inset 0 0 10px rgba(0,255,100,0.2);
