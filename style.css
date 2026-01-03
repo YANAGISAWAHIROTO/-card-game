@@ -1,51 +1,47 @@
 body {
-  background: #111;
-  color: #eee;
   font-family: sans-serif;
-  text-align: center;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+#game {
+  display: flex;
+  gap: 20px;
 }
 
 #board {
   display: grid;
-  grid-template-columns: repeat(3, 90px);
-  grid-template-rows: repeat(5, 90px);
-  gap: 6px;
-  margin: 10px auto;
-  width: max-content;
+  grid-template-columns: repeat(5, 80px);
+  grid-template-rows: repeat(5, 80px);
+  gap: 4px;
 }
 
 .cell {
-  border: 2px solid #555;
+  background: #333;
+  border: 1px solid #666;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card {
+  background: #4b2a5c;
+  border: 2px solid #b38cff;
+  width: 70px;
+  height: 70px;
   font-size: 12px;
+  text-align: center;
   cursor: pointer;
 }
 
-.cell.player { background: #183040; }
-.cell.enemy  { background: #401818; }
-.cell.trap   { background: #403018; }
-
-.cell.selected {
-  outline: 3px solid yellow;
+#ui {
+  width: 300px;
 }
 
-#skills button {
-  margin: 4px;
+#hand .card {
+  margin: 5px 0;
 }
 
-.controls {
-  margin: 10px;
-}
-
-.bases {
-  display: flex;
-  justify-content: space-around;
-  margin: 10px 0;
-}
-
-#log {
-  margin: 10px;
-  min-height: 1.5em;
+.active {
+  border-color: gold;
 }
