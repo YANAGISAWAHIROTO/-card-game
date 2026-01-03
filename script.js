@@ -139,4 +139,4 @@ function createSalik() {
     { name: "破炎🔥", dmg: 3, dice: [2,1], effects: ["fire"] },
     { name: "復活の呪文", dmg: 0, dice: [4,1], effects: ["revive"] }
   ]);
-                           }
+    }
