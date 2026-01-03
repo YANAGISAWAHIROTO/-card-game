@@ -1,33 +1,25 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <title>カードゲーム</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>カードゲーム Prototype</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2 id="turn-indicator">自分のターン</h2>
+<h1>カードゲーム Prototype</h1>
 
-<div id="board"></div>
+<div id="game">
+  <div id="board"></div>
 
-<div class="controls">
-  <button id="dice-btn">🎲 サイコロ</button>
-  <span id="dice-result">-</span>
+  <div id="ui">
+    <button id="drawBtn">山札から引く</button>
+    <button id="diceBtn">🎲 サイコロ</button>
+    <div id="log"></div>
+    <div id="hand"></div>
+  </div>
 </div>
 
-<div id="skills"></div>
-
-<div class="bases">
-  <div id="enemy-base">敵本体 ❤️6</div>
-  <div id="player-base">自分本体 ❤️6</div>
-</div>
-
-<div id="log"></div>
-<button id="end-turn-btn">ターン終了</button>
-
-<script src="cards.js"></script>
-<script src="dice.js"></script>
-<script src="game.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
