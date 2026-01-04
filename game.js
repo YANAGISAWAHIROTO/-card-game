@@ -1,36 +1,34 @@
-// ===== 基本状態 =====
 let deck = [];
 let hand = [];
 let field = [];
 let currentPlayer = "player";
 
-// ★ 追加：ドロー制御
 let drawCountThisTurn = 0;
 const MAX_DRAW_PER_TURN = 1;
 
-// ===== 初期化 =====
+// ★ 多重ドロー防止
+let isDrawing = false;
+
 function initGame() {
-  deck = createDeck(); // cards.js の関数
+  deck = createDeck();
   shuffle(deck);
   hand = [];
   field = [];
   drawCountThisTurn = 0;
+  isDrawing = false;
+  updateDrawButton();
   render();
 }
 
-// ===== 山札生成 =====
 function createDeck() {
   const allCards = [];
-
   cards.forEach(card => {
     allCards.push({ ...card });
-    allCards.push({ ...card }); // ★ 2倍デッキ
+    allCards.push({ ...card }); // 2倍デッキ
   });
-
   return allCards;
 }
 
-// ===== シャッフル =====
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -38,10 +36,12 @@ function shuffle(array) {
   }
 }
 
-// ===== ドロー処理（★バグ修正版） =====
+// ===== ドロー（完全ロック版）=====
 function drawCard() {
+  if (isDrawing) return;
+
   if (drawCountThisTurn >= MAX_DRAW_PER_TURN) {
-    alert("このターンはこれ以上カードを引けません");
+    alert("このターンはもうカードを引けません");
     return;
   }
 
@@ -50,25 +50,37 @@ function drawCard() {
     return;
   }
 
+  isDrawing = true;
+
   const card = deck.pop();
   hand.push(card);
   drawCountThisTurn++;
 
+  updateDrawButton();
   renderHand();
+
+  // ★ 非同期対策
+  setTimeout(() => {
+    isDrawing = false;
+  }, 100);
 }
 
-// ===== ターン終了 =====
 function endTurn() {
   drawCountThisTurn = 0;
   currentPlayer = currentPlayer === "player" ? "enemy" : "player";
+  updateDrawButton();
   alert(currentPlayer === "player" ? "あなたのターン" : "相手のターン");
+}
+
+function updateDrawButton() {
+  const btn = document.getElementById("draw-button");
+  btn.disabled = drawCountThisTurn >= MAX_DRAW_PER_TURN;
 }
 
 // ===== 描画 =====
 function render() {
   renderDeck();
   renderHand();
-  renderField();
 }
 
 function renderDeck() {
@@ -78,8 +90,7 @@ function renderDeck() {
 function renderHand() {
   const handArea = document.getElementById("hand");
   handArea.innerHTML = "";
-
-  hand.forEach((card, index) => {
+  hand.forEach(card => {
     const div = document.createElement("div");
     div.className = "card";
     div.textContent = card.name;
@@ -87,10 +98,4 @@ function renderHand() {
   });
 }
 
-function renderField() {
-  const fieldArea = document.getElementById("field");
-  fieldArea.innerHTML = "";
-}
-
-// ===== 起動 =====
 initGame();
