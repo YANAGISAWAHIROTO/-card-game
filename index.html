@@ -1,28 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Card Game Complete</title>
+  <meta charset="UTF-8" />
+  <title>カードゲーム 完全版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>カードゲーム 完全版</h1>
+  <h1>カードゲーム 完全版</h1>
 
-<div id="game">
-  <div id="board"></div>
+  <!-- ===== 操作エリア ===== -->
+  <div id="control-panel">
+    <button id="draw-button" onclick="drawCard()">山札ドロー</button>
+    <button onclick="endTurn()">ターン終了</button>
+    <button onclick="rollDice()">🎲 サイコロ</button>
 
-  <div id="ui">
-    <button id="drawBtn">山札ドロー</button>
-    <button id="diceBtn">🎲 サイコロ</button>
-    <div id="turn">PLAYER TURN</div>
-    <div id="hand"></div>
-    <div id="log"></div>
+    <div class="info">
+      山札残り：<span id="deck-count">0</span>
+    </div>
+    <div class="info">
+      ターン：<span id="turn-display">PLAYER</span>
+    </div>
+    <div class="info">
+      出目：<span id="dice-result">-</span>
+    </div>
   </div>
-</div>
 
-<script src="cards.js"></script>
-<script src="rules.js"></script>
-<script src="main.js"></script>
+  <!-- ===== 盤上 ===== -->
+  <h2>盤上</h2>
+  <div id="board">
+    <!-- 5 × 5 マス -->
+    <div class="board-grid">
+      <!-- JSで制御しやすいよう data-index -->
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+      <div class="cell" data-index="9"></div>
+
+      <div class="cell" data-index="10"></div>
+      <div class="cell" data-index="11"></div>
+      <div class="cell" data-index="12"></div>
+      <div class="cell" data-index="13"></div>
+      <div class="cell" data-index="14"></div>
+
+      <div class="cell" data-index="15"></div>
+      <div class="cell" data-index="16"></div>
+      <div class="cell" data-index="17"></div>
+      <div class="cell" data-index="18"></div>
+      <div class="cell" data-index="19"></div>
+
+      <div class="cell" data-index="20"></div>
+      <div class="cell" data-index="21"></div>
+      <div class="cell" data-index="22"></div>
+      <div class="cell" data-index="23"></div>
+      <div class="cell" data-index="24"></div>
+    </div>
+  </div>
+
+  <!-- ===== 手札 ===== -->
+  <h2>手札</h2>
+  <div id="hand" class="hand-area">
+    <!-- JSでカード生成 -->
+  </div>
+
+  <!-- ===== ログ ===== -->
+  <h2>ログ</h2>
+  <div id="log" class="log-area"></div>
+
+  <!-- ===== JS ===== -->
+  <script src="cards.js"></script>
+  <script src="dice.js"></script>
+  <script src="game.js"></script>
+  <script src="script.js"></script>
+
 </body>
-</html>
+  </html>
