@@ -1,34 +1,25 @@
 let deck = [];
 let hand = [];
-let field = [];
-let currentPlayer = "player";
+let isDrawnThisTurn = false;
+let currentTurn = "PLAYER";
 
-let drawCountThisTurn = 0;
-const MAX_DRAW_PER_TURN = 1;
-
-// ★ 多重ドロー防止
-let isDrawing = false;
-
-function initGame() {
+// ===== ゲーム開始 =====
+function startGame() {
   deck = createDeck();
   shuffle(deck);
-  hand = [];
-  field = [];
-  drawCountThisTurn = 0;
-  isDrawing = false;
-  updateDrawButton();
-  render();
+  updateDeckCount();
+  log("ゲーム開始！");
 }
 
+window.onload = startGame;
+
+// ===== 山札作成 =====
 function createDeck() {
-  const allCards = [];
-  cards.forEach(card => {
-    allCards.push({ ...card });
-    allCards.push({ ...card }); // 2倍デッキ
-  });
-  return allCards;
+  // cards.js に定義している全カードをコピー
+  return [...cards];
 }
 
+// ===== シャッフル =====
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -36,12 +27,10 @@ function shuffle(array) {
   }
 }
 
-// ===== ドロー（完全ロック版）=====
+// ===== ドロー =====
 function drawCard() {
-  if (isDrawing) return;
-
-  if (drawCountThisTurn >= MAX_DRAW_PER_TURN) {
-    alert("このターンはもうカードを引けません");
+  if (isDrawnThisTurn) {
+    alert("このターンはもうドローできません");
     return;
   }
 
@@ -50,52 +39,29 @@ function drawCard() {
     return;
   }
 
-  isDrawing = true;
-
   const card = deck.pop();
   hand.push(card);
-  drawCountThisTurn++;
+  isDrawnThisTurn = true;
 
-  updateDrawButton();
+  updateDeckCount();
   renderHand();
-
-  // ★ 非同期対策
-  setTimeout(() => {
-    isDrawing = false;
-  }, 100);
+  log(`ドロー：${card.name}`);
 }
 
+// ===== ターン終了 =====
 function endTurn() {
-  drawCountThisTurn = 0;
-  currentPlayer = currentPlayer === "player" ? "enemy" : "player";
-  updateDrawButton();
-  alert(currentPlayer === "player" ? "あなたのターン" : "相手のターン");
+  isDrawnThisTurn = false;
+  currentTurn = currentTurn === "PLAYER" ? "ENEMY" : "PLAYER";
+  document.getElementById("turn-display").textContent = currentTurn;
+  log(`${currentTurn} のターン`);
 }
 
-function updateDrawButton() {
-  const btn = document.getElementById("draw-button");
-  btn.disabled = drawCountThisTurn >= MAX_DRAW_PER_TURN;
-}
-
-// ===== 描画 =====
-function render() {
-  renderDeck();
-  renderHand();
-}
-
-function renderDeck() {
+// ===== 表示更新 =====
+function updateDeckCount() {
   document.getElementById("deck-count").textContent = deck.length;
 }
 
-function renderHand() {
-  const handArea = document.getElementById("hand");
-  handArea.innerHTML = "";
-  hand.forEach(card => {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.textContent = card.name;
-    handArea.appendChild(div);
-  });
+function log(text) {
+  const logArea = document.getElementById("log");
+  logArea.innerHTML += `<div>${text}</div>`;
 }
-
-initGame();
