@@ -64,4 +64,4 @@ function updateDeckCount() {
 function log(text) {
   const logArea = document.getElementById("log");
   logArea.innerHTML += `<div>${text}</div>`;
-}
+    }
