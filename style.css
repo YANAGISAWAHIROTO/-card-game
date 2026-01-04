@@ -1,47 +1,48 @@
 body {
-  font-family: sans-serif;
-  background: #1e1e1e;
-  color: #fff;
+  background:#1b1026;
+  color:#fff;
+  font-family:sans-serif;
 }
 
 #game {
-  display: flex;
-  gap: 20px;
+  display:flex;
+  gap:20px;
 }
 
 #board {
-  display: grid;
-  grid-template-columns: repeat(5, 80px);
-  grid-template-rows: repeat(5, 80px);
-  gap: 4px;
+  display:grid;
+  grid-template-columns:repeat(5,80px);
+  grid-template-rows:repeat(5,80px);
+  gap:4px;
 }
 
 .cell {
-  background: #333;
-  border: 1px solid #666;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background:#2a183b;
+  border:1px solid #555;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .card {
-  background: #4b2a5c;
-  border: 2px solid #b38cff;
-  width: 70px;
-  height: 70px;
-  font-size: 12px;
-  text-align: center;
-  cursor: pointer;
+  width:70px;
+  height:70px;
+  background:#4b2a5c;
+  border:2px solid #9f7aea;
+  font-size:11px;
+  cursor:pointer;
+  text-align:center;
+}
+
+.card.active {
+  border-color:gold;
 }
 
 #ui {
-  width: 300px;
+  width:280px;
 }
 
-#hand .card {
-  margin: 5px 0;
-}
-
-.active {
-  border-color: gold;
+#log {
+  font-size:12px;
+  margin-top:10px;
 }
