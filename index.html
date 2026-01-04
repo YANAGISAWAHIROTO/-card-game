@@ -2,24 +2,27 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>カードゲーム Prototype</title>
+  <title>Card Game Complete</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>カードゲーム Prototype</h1>
+<h1>カードゲーム 完全版</h1>
 
 <div id="game">
   <div id="board"></div>
 
   <div id="ui">
-    <button id="drawBtn">山札から引く</button>
+    <button id="drawBtn">山札ドロー</button>
     <button id="diceBtn">🎲 サイコロ</button>
-    <div id="log"></div>
+    <div id="turn">PLAYER TURN</div>
     <div id="hand"></div>
+    <div id="log"></div>
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="cards.js"></script>
+<script src="rules.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
